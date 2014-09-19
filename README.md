@@ -21,7 +21,7 @@ java -jar target/net-monitor-1.0-SNAPSHOT.jar [src_ip] [dest_ip] [port]
 
 src_ip - IP of source ethernet board
 dest_ip -IP of destiny ethernet board
-port - port to monitor
+port - port to monitoring
 ```
 example:
 ```
