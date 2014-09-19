@@ -8,7 +8,9 @@ How build it?
 
 After clone it, install maven and type the following command:
 
+```
 mvn clean install
+```
 
 How use it?
 ===========
