@@ -1,7 +1,7 @@
 net-monitor
 ===========
 
-Simple java network monitor
+Simple java network port monitor
 
 How build it?
 =============
