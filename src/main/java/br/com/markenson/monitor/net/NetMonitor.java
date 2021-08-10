@@ -17,7 +17,7 @@ public class NetMonitor {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
 		if (args.length != 3){
-			System.out.printf("Usage:\n\tjava -jar net-monitor.jar src_ip dest_ip port\n");
+			System.out.printf("Usage:\n\tjava -jar net-monitor.jar src_ip dest_ip port\n\n");
 			return;
 		}
 		
