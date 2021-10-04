@@ -13,11 +13,12 @@ public class NetMonitor {
 	private String source;
 	private String target;
 	private int port;
+	private boolean exitOnConnection = false;
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
-		if (args.length != 3){
-			System.out.printf("Usage:\n\tjava -jar net-monitor.jar src_ip dest_ip port\n\n");
+		if (args.length < 3){
+			System.out.printf("Usage:\n\tjava -jar net-monitor.jar src_ip dest_ip port [-e]\n\n");
 			return;
 		}
 		
@@ -25,6 +26,10 @@ public class NetMonitor {
 		
 		m.setSource(args[0]);
 		m.setTarget(args[1]);
+		if (args.length == 4 && args[3].equals("-e")){
+				m.setExitOnConnection(true);
+		}
+		
 		m.setPort(Integer.valueOf(args[2]));
 		
 		m.start();
@@ -33,6 +38,11 @@ public class NetMonitor {
 	private void setSource(String s) {
 		source = s;
 	}
+	
+	private void setExitOnConnection(boolean b) {
+		exitOnConnection = b;
+	}
+
 
 	private void start() throws UnknownHostException, IOException {
 		Timer t = new Timer(false);
@@ -60,6 +70,11 @@ public class NetMonitor {
 				if (s.isConnected()){
 					System.out.println(new Date() + " " + target + ":" + port + " [CONNECTED]");
 					s.close();
+					if (exitOnConnection){
+//							Runtime.getRuntime().halt(0);
+						System.exit(0);
+					}
+
 				}else{
 					System.out.println(new Date() + " " + target + ":" + port + " [DISCONNECTED]");
 				};
